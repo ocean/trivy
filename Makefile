@@ -47,7 +47,13 @@ fmt:
 
 .PHONY: build
 build:
-	go build $(LDFLAGS) ./cmd/trivy
+	GOOS=linux GOARCH=amd64 go build -o bin/linux/amd64/ $(LDFLAGS) ./cmd/trivy
+	GOOS=linux GOARCH=arm64 go build -o bin/linux/arm64/ $(LDFLAGS) ./cmd/trivy
+
+.PHONY: image
+image:
+	docker buildx build --platform linux/amd64 --build-arg OS_ARG=linux --build-arg ARCH_ARG=amd64 -t oceanic/trivy --push .
+	docker buildx build --platform linux/arm64 --build-arg OS_ARG=linux --build-arg ARCH_ARG=arm64 -t oceanic/trivy --push .
 
 .PHONY: protoc
 protoc:
@@ -60,6 +66,7 @@ install:
 .PHONY: clean
 clean:
 	rm -rf integration/testdata/fixtures/
+	cd bin && rm -rf *
 
 $(GOBIN)/labeler:
 	GO111MODULE=off go get github.com/knqyf263/labeler
