@@ -86,8 +86,8 @@ dockers:
   - image_templates:
       - "docker.io/oceanic/trivy:{{ .Version }}-amd64"
       - "docker.io/oceanic/trivy:latest-amd64"
-      # - "ghcr.io/aquasecurity/trivy:{{ .Version }}-amd64"
-      # - "ghcr.io/aquasecurity/trivy:latest-amd64"
+      - "ghcr.io/ocean/trivy:{{ .Version }}-amd64"
+      - "ghcr.io/ocean/trivy:latest-amd64"
       # - "public.ecr.aws/aquasecurity/trivy:latest-amd64"
       # - "public.ecr.aws/aquasecurity/trivy:{{ .Version }}-amd64"
     use_buildx: true
@@ -110,8 +110,8 @@ dockers:
   - image_templates:
       - "docker.io/oceanic/trivy:{{ .Version }}-arm64"
       - "docker.io/oceanic/trivy:latest-arm64"
-      # - "ghcr.io/aquasecurity/trivy:{{ .Version }}-arm64"
-      # - "ghcr.io/aquasecurity/trivy:latest-arm64"
+      - "ghcr.io/ocean/trivy:{{ .Version }}-arm64"
+      - "ghcr.io/ocean/trivy:latest-arm64"
       # - "public.ecr.aws/aquasecurity/trivy:latest-arm64"
       # - "public.ecr.aws/aquasecurity/trivy:{{ .Version }}-arm64"
     use_buildx: true
@@ -137,10 +137,10 @@ docker_manifests:
     image_templates:
     - 'oceanic/trivy:{{ .Version }}-amd64'
     - 'oceanic/trivy:{{ .Version }}-arm64'
-  # - name_template: 'ghcr.io/aquasecurity/trivy:{{ .Version }}'
-  #   image_templates:
-  #   - 'ghcr.io/aquasecurity/trivy:{{ .Version }}-amd64'
-  #   - 'ghcr.io/aquasecurity/trivy:{{ .Version }}-arm64'
+  - name_template: 'ghcr.io/ocean/trivy:{{ .Version }}'
+    image_templates:
+    - 'ghcr.io/ocean/trivy:{{ .Version }}-amd64'
+    - 'ghcr.io/ocean/trivy:{{ .Version }}-arm64'
   # - name_template: 'public.ecr.aws/aquasecurity/trivy:{{ .Version }}'
   #   image_templates:
   #   - 'public.ecr.aws/aquasecurity/trivy:{{ .Version }}-amd64'
@@ -149,10 +149,10 @@ docker_manifests:
     image_templates:
     - 'oceanic/trivy:{{ .Version }}-amd64'
     - 'oceanic/trivy:{{ .Version }}-arm64'
-  # - name_template: 'ghcr.io/aquasecurity/trivy:latest'
-  #   image_templates:
-  #   - 'ghcr.io/aquasecurity/trivy:{{ .Version }}-amd64'
-  #   - 'ghcr.io/aquasecurity/trivy:{{ .Version }}-arm64'
+  - name_template: 'ghcr.io/ocean/trivy:latest'
+    image_templates:
+    - 'ghcr.io/ocean/trivy:{{ .Version }}-amd64'
+    - 'ghcr.io/ocean/trivy:{{ .Version }}-arm64'
   # - name_template: 'public.ecr.aws/aquasecurity/trivy:latest'
   #   image_templates: 
   #   - 'public.ecr.aws/aquasecurity/trivy:{{ .Version }}-amd64'
