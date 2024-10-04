@@ -78,6 +78,7 @@ release:
 nfpms:
   -
     formats:
+      - apk
       - deb
       - rpm
     vendor: "aquasecurity"
@@ -103,6 +104,9 @@ nfpms:
      - src: contrib/*.tpl
        dst: /usr/local/share/trivy/templates
     rpm:
+      signature:
+         key_file: '{{ .Env.GPG_FILE }}'
+    apk:
       signature:
          key_file: '{{ .Env.GPG_FILE }}'
 
